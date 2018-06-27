@@ -26,9 +26,19 @@ Step 04 : Create User hr, set password, unlock & grant DB
 
 	SQL>
 
-Step 05: run your frist sql query [see the name to table exist in db]
+Step 05 : connect to system
+	
+	SQL>	connect hr
+	Enter password:hr
+	Connected.
+	SQL>
+
+
+Step 06: run your frist sql query [see the name to table exist in db]
 
 	SQL> select * from tab;
 
 
-See the results ?? ongratualtion you are good to go. good luck;
+See the results ?? Congratualtion you are good to go. good luck;
+
+N.B: From now on will use Step 05 each time to login. 

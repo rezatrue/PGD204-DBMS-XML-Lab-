@@ -38,4 +38,11 @@ Lesson 08:  Duplicate removing [DISTINCT]
 
 		SQL>select distinct department_id from employees; 		
 			
+	
+Lab Test : find out annual salary with commision
+		
+		SQL>select last_name as Name, salary*12*(1 + NVL(commission_pct, 0)) as "Total Annual Salary" from employees;
+		
+		N.B: NVL function return 0 if commission_pct if null
+
 		

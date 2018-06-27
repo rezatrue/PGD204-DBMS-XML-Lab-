@@ -30,9 +30,73 @@ Lesson 02: Using WHERE clause
 	
 		SQL>SELECT last_name, manager_id FROM employees WHERE manager_id IS NULL ;
 		
-	Using AND OR NOT
+	Using AND, OR, NOT
 	
-		SQL>
+		SQL>SELECT employee_id, last_name, job_id, salary FROM  employees
+			WHERE salary >= 10000 AND job_id LIKE '%MAN%' ;
+			
+		SQL>SELECT employee_id, last_name, job_id, salary FROM employees
+			WHERE  salary >= 10000 OR job_id LIKE '%MAN%' ;
+			
+		SQL>SELECT last_name, job_id FROM   employees
+			WHERE  job_id NOT IN ('IT_PROG', 'ST_CLERK', 'SA_REP') ;
+			
+	Rules of Precedence >> ACC IS NOT LIKE BIT = NOTAO 
+		Arithmetic , Concatenation , Comparison , IS NOT LIKE, BETWEEN, != NOT , AND , OR 
+	
+		SQL>SELECT last_name, job_id, salary FROM employees
+			WHERE  job_id = 'SA_REP' OR  job_id = 'AD_PRES' AND salary > 15000;
+			
+		SQL>SELECT last_name, job_id, salary FROM employees
+			WHERE  (job_id = 'SA_REP' OR job_id = 'AD_PRES') AND salary > 15000;
+		
+		
+Lesson 03: Using ORDER BY [ASC (default), DESC]
+
+		SQL>SELECT  last_name, job_id, department_id, hire_date FROM employees
+			ORDER BY hire_date ;
+			
+		SQL>SELECT  last_name, job_id, department_id, hire_date FROM employees
+			ORDER BY hire_date ORDER BY DESC;
+		
+		SQL>SELECT last_name, job_id, department_id, hire_date FROM employees
+			ORDER BY 3;  [using the column’s numeric position]
+			
+		SQL>SELECT last_name, department_id, salary FROM employees
+			ORDER BY department_id , salary DESC;
+			
+Lesson 04: Using Substitution Variables
+
+		SQL>SELECT employee_id, last_name, salary, department_id FROM  employees
+			WHERE  employee_id = &employee_num; [ask for employee_num]
+		
+		SQL>SELECT last_name, department_id, salary*12, job_id FROM employees
+			WHERE  job_id = '&job_title' ; [Character & Date must be use with quote]
+			
+		SQL>SELECT employee_id, last_name, job_id, &column_name FROM  employees 
+			WHERE  &condition
+			ORDER BY &order_column DESC;
+
+		SQL>SELECT   employee_id, last_name, job_id, &&column_name
+			FROM     employees
+			ORDER BY &column_name;
+	
+	[this statement won't ask for value]
+		SQL>DEFINE employee_num = 200 
+
+		SELECT employee_id, last_name, salary, department_id
+		FROM   employees
+		WHERE  employee_id = &employee_num ;
+
+		UNDEFINE employee_num
+		
+	
+		
+		
+	
+	
+	SQL>
+	SQL>
 		
 		
 		

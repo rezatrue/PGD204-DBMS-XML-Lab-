@@ -28,7 +28,14 @@ Lesson 06:  Concatination (adding more than one column value together )
 OR,
 		SQL>select last_name || ' is a ' || job_id as "Employee Details" from employees;
 
+Lesson 07:  Quate oparator (')
 
-		
-		
+		SQL>select last_name || '''s annual salary is ' || salary*12 "Employees Salary statement" from employees;
+OR,
+		SQL>select last_name || q'['s annual salary is ]' || salary*12 "Employees Salary statement" from employees;
+
+Lesson 08:  Duplicate removing [DISTINCT]
+
+		SQL>select distinct department_id from employees; 		
+			
 		

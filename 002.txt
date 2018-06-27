@@ -1,0 +1,34 @@
+Lesson 01: retrieve / view all data from employees table
+
+		SQL>select * from employees;
+		
+Lesson 02: retrieve / view spacific Column data from employees table
+
+		SQL>select employee_id, first_name, last_name, salary from employees;
+	
+Lesson 03: select spacific Column data from employees table
+
+		SQL>select employee_id, first_name, last_name, salary from employees;
+
+Lesson 04: we can use arithmetic oparation in sql statement (can you +, -, *, /)
+
+		SQL>select last_name , salary + 300 from employees;
+OR,
+		SQL>select last_name , 12*salary from employees;
+
+Lesson 05: can use column Aliases 
+
+		SQL>select last_name as name, salary*12 as "Annual Salary" from employees;
+OR,
+		SQL>select last_name name, salary*12 "Annual Salary" from employees;
+		
+Lesson 06:  Concatination (adding more than one column value together )
+
+		SQL>select first_name || ' ' || last_name name, salary*12 "Annual Salary" from employees;
+OR,
+		SQL>select last_name || ' is a ' || job_id as "Employee Details" from employees;
+
+
+		
+		
+		

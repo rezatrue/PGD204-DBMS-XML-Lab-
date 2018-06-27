@@ -39,6 +39,12 @@ Step 06: run your frist sql query [see the name to table exist in db]
 	SQL> select * from tab;
 
 
-See the results ?? Congratualtion you are good to go. good luck;
+See the results ?? Congratualtion you are good to go. Good luck;
+
+
+Lesson 01 : To all about a scpacific table(eg;departments) 
+
+	SQL> describe departments;
+
 
 N.B: From now on will use Step 05 each time to login. 

@@ -12,4 +12,87 @@ Lesson 02 : [Find the name, loan number and loan amount of all customers having 
 		
 		
 	
+Lesson 03:  Find the name, loan number and loan amount of all customers  having a loan at the Perryridge branch.
+
+	SQL>select customer_name, borrower.loan_number, amount
+			from borrower, loan
+			where borrower.loan_number = loan.loan_number and branch_name = 'Perryridge'; 
+
+Lesson 04:  Find the name, loan number and loan amount of all customers; rename the column name loan_number as loan_id.			
+	SQL>select customer_name, borrower.loan_number as loan_id, amount
+		from borrower, loan
+		where borrower.loan_number = loan.loan_number;
+		
+Lesson 05:  Find the customer names and their loan numbers and amount for all customers having a loan at some branch.
+	
+	SQL>select customer_name, T.loan_number, S.amount 
+		from borrower as T, loan as S  
+		where  T.loan_number = S.loan_number;
+		where borrower.loan_number = loan.loan_number;
+		
+
+Lesson 06:  Find the names of all branches that have greater assets than some branch located in Brooklyn.
+	
+	SQL>select distinct T.branch_name
+		from branch as T, branch as S
+		where T.assets > S.assets and S.branch_city = 'Brooklyn';
+		
+Lesson 07:  Find the names of all customers whose street includes the substring “oo”.
+	
+	SQL>select customer_name from customer 
+		where customer_street like '%oo%';
+		
+Lesson 08:  List in alphabetic order the names of all customers having a loan in Perryridge branch
+	
+	SQL>select distinct customer_name
+		from borrower, loan	
+		where borrower.loan_number = loan.loan_number and branch_name = 'Perryridge'
+		order by customer_name;
+		
+Lesson 09:  Find all customers who have a loan, an account, or both:
+			
+			SQL>(select customer_name from depositor)
+				union
+				(select customer_name from borrower);
+			
+		Find all customers who have both a loan and an account
+			
+			SQL>(select customer_name from depositor)
+				intersect
+				(select customer_name from borrower);
+			
+		Find all customers who have an account but no loan.
+			
+			SQL>(select customer_name from depositor)
+				except
+				(select customer_name from borrower);
+		
+Lesson 10: Find the average account balance at the Perryridge branch.
+		
+			SQL>select avg(balance)
+				from account
+				where branch_name = 'Perryridge';
+
+				
+Lesson 11: Aggregate Functions (avg, min, max, sum, count)	
+
+			SQL>select avg (balance)
+				from account
+				where branch_name = 'Perryridge';
+
+			SQL>select count (*) from customer;
+			
+Lesson 11: Find the number of depositors for each branch.
+
+			SQL>select count(depositor.customer_name), branch_name 
+				from depositor , account 
+				where depositor.account_number = account.account_number
+				group by branch_name;
+				
+Lesson 12: Find the names of all branches where the average account balance is more than $1,200.
+
+			SQL>select branch_name, avg(balance)
+				from account 
+				group by branch_name
+				having avg(balance) > 1200;
 	

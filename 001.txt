@@ -26,7 +26,7 @@ Step 04 : Create User hr, set password, unlock & grant DB
 
 	SQL>
 
-Step 05 : connect to system
+Step 05 : connect to hr
 	
 	SQL>	connect hr
 	Enter password:hr

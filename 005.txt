@@ -66,6 +66,11 @@ Lesson 09:  Find all customers who have a loan, an account, or both:
 			SQL>(select customer_name from depositor)
 				except
 				(select customer_name from borrower);
+			
+			OR
+			SQL>(select customer_name from depositor)
+				minus
+				(select customer_name from borrower);	
 		
 Lesson 10: Find the average account balance at the Perryridge branch.
 		
@@ -95,4 +100,45 @@ Lesson 12: Find the names of all branches where the average account balance is m
 				from account 
 				group by branch_name
 				having avg(balance) > 1200;
+
+
+Lesson 13: Find all customers who have both an account and a loan at the bank.
+			
+		Using "IN" Construct 
+			SQL>select distinct customer_name
+				from borrower
+				where customer_name in (select customer_name from depositor );	
+				
+		Alternative way in Lesson 9
+			SQL>(select distinct customer_name from borrower)
+				intersect
+				(select customer_name from depositor );
+				
+Lesson 14: Find all customers who have a loan at the bank but do not have an account at the bank
+			
+		Using "NOT IN" Construct 
+			SQL>select distinct customer_name
+				from borrower
+				where customer_name not in (select customer_name from depositor);	
+				
+		Alternative way in Lesson 9
+			SQL>(select customer_name from borrower)
+				minus
+				(select customer_name from depositor);
 	
+
+Lesson 15: Find all customers who have both an account and a loan at the Perryridge branch
+			
+			SQL>select distinct customer_name
+				from borrower, loan
+				where borrower.loan_number = loan.loan_number and
+				branch_name = 'Perryridge'  and
+				(branch_name, customer_name ) in
+				(select branch_name, customer_name
+				from depositor, account
+				where depositor.account_number =  account.account_number );	
+				
+		Alternative
+			SQL>(select customer_name from borrower)
+				minus
+				(select customer_name from depositor);	

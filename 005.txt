@@ -1,0 +1,15 @@
+###Make sure you have 6 table & data inserted ###
+###You can try this -> SQL_create-Insert.txt file###
+
+Lesson 01 : [Find the Cartesian product borrower X loan]
+	
+	SQL>select * from borrower, loan;
+	
+Lesson 02 : [Find the name, loan number and loan amount of all customers having a loan at the Perryridge branch.]
+	
+	SQL>select customer_name, borrower.loan_number, amount from borrower, loan 
+		where borrower.loan_number = loan.loan_number and branch_name = 'Perryridge';
+		
+		
+	
+	

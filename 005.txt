@@ -139,6 +139,43 @@ Lesson 15: Find all customers who have both an account and a loan at the Perryri
 				where depositor.account_number =  account.account_number );	
 				
 		Alternative
-			SQL>(select customer_name from borrower)
-				minus
-				(select customer_name from depositor);	
+			SQL>(select customer_name 
+				from depositor, account
+				where depositor.account_number = account.account_number and account.branch_name = 'Perryridge')
+				intersect (select customer_name from borrower);	
+				
+
+Lesson 16: Find all branches that have greater assets than some branch located in Brooklyn.
+			
+		Using "some" construct
+			SQL> select branch_name from branch
+				where assets > some (select assets from branch where branch_city = 'Brooklyn');
+				
+			Alternative
+			SQL>select distinct  T.branch_name
+				from branch T, branch S
+				where  T.assets > S.assets and
+				S.branch_city = 'Brooklyn';
+				
+Lesson 16: Find the names of all branches that have greater assets than all branches located in Brooklyn.
+			
+		Using "all" construct
+			SQL> select branch_name 
+				from branch 
+				where assets > all
+				(select assets from branch where branch_city = 'Brooklyn');
+				
+Lesson 17: Find all customers who have an account at all branches located in Brooklyn.
+			
+		SQL>select distinct S.customer_name
+			from depositor S
+			where not exists (
+			(select branch_name
+			from branch
+			where branch_city = 'Brooklyn')
+			minus
+			(select R.branch_name
+			from depositor T, account R
+			where T.account_number = R.account_number and
+			S.customer_name = T.customer_name ));
+		

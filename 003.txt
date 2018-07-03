@@ -1,4 +1,4 @@
-Lesson 01: Using WHERE clause
+﻿Lesson 01: Using WHERE clause
 
 		SQL>SELECT employee_id, last_name, job_id, department_id FROM   employees
 			WHERE  department_id = 90;
@@ -57,7 +57,7 @@ Lesson 03: Using ORDER BY [ASC (default), DESC]
 			ORDER BY hire_date ;
 			
 		SQL>SELECT  last_name, job_id, department_id, hire_date FROM employees
-			ORDER BY hire_date ORDER BY DESC;
+			ORDER BY hire_date DESC;
 		
 		SQL>SELECT last_name, job_id, department_id, hire_date FROM employees
 			ORDER BY 3;  [using the column’s numeric position]

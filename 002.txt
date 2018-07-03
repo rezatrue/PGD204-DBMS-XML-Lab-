@@ -2,11 +2,11 @@ Lesson 01: retrieve / view all data from employees table
 
 		SQL>select * from employees;
 		
-Lesson 02: retrieve / view spacific Column data from employees table
+Lesson 02: retrieve / view specific Column data from employees table
 
 		SQL>select employee_id, first_name, last_name, salary from employees;
 	
-Lesson 03: select spacific Column data from employees table
+Lesson 03: select specific Column data from employees table
 
 		SQL>select employee_id, first_name, last_name, salary from employees;
 

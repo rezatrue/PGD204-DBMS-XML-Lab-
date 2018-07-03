@@ -1,17 +1,31 @@
-Lesson 1: Insert
+Lesson 1: create table in oracle
+
+	SQL>create TABLE depositor 
+		(customer_name varchar2(20), 
+		 account_number varchar2(20),
+		 CONSTRAINT depositor_name_number_pk PRIMARY KEY (customer_name,   account_number),
+		 CONSTRAINT depositor_customer_name_fk FOREIGN KEY (customer_name) 
+                                                       REFERENCES customer(customer_name),
+		 CONSTRAINT depositor_account_number_fk FOREIGN KEY (account_number) 
+                                                       REFERENCES account(account_number)
+	);
+
+
+
+Lesson 2: Insert
 			
 		SQL>insert into account	values ('A-9732', 'Perryridge', 1200);
 	OR	
 		SQL>insert into account (branch_name, balance, account_number)
 			values ('Perryridge',  1200, 'A-9732');
 		
-Lesson 2: Update
-	
+Lesson 3: Update
+
 	Increase all accounts with balances over $10,000 by 6%, all other accounts receive 5%.
 	
 		SQL>update account set balance = balance * 1.06 where balance > 10000; 
 			update account set balance = balance * 1.05	where balance =< 10000;
 		
-Lesson 3: Delete
+Lesson 4: Delete
 			
 		SQL>delete from account	where branch_name = 'Perryridge';
